@@ -1,0 +1,8 @@
+{
+  "ios": {
+    "modules": ["QuicktrackingAnalyticsExpoModule"]
+  },
+  "android": {
+    "modules": ["com.quicktrackinganalyticsmodule.QuicktrackingAnalyticsExpoModule"]
+  }
+}

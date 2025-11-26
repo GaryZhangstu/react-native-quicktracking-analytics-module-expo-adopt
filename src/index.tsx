@@ -1,9 +1,19 @@
 import { NativeModules, Platform } from 'react-native';
+import { requireNativeModule } from 'expo-modules-core';
 
 type GlobalProperty = Record<string, string | number | string[]>;
 type EventParams = Record<string, string | number | string[]>;
 
-const QuicktrackingAnalyticsModule = NativeModules.QuicktrackingAnalyticsModule;
+// Try to load Expo module first, fallback to traditional native module if not in Expo
+let QuicktrackingAnalyticsModule: any;
+try {
+  QuicktrackingAnalyticsModule = requireNativeModule(
+    'QuicktrackingAnalyticsExpoModule'
+  );
+} catch (e) {
+  // Not in Expo environment, use traditional native modules
+  QuicktrackingAnalyticsModule = NativeModules.QuicktrackingAnalyticsModule;
+}
 
 //****************初始化相关**************** */
 /**
