@@ -1,7 +1,13 @@
 {
-  "name": "react-native-quicktracking-analytics-module",
-  "version": "2.1.1",
-  "description": "QuickTracking ReactNative Analytics SDK",
+  "name": "react-native-quicktracking-analytics-module-expo-adopt",
+  "version": "1.0.0",
+  "description": "QuickTracking ReactNative Analytics SDK with Expo support - enhanced with expo modules core",
+  "license": "MIT",
+  "author": "Gary Zhang",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GaryZhangstu/react-native-quicktracking-analytics-module-expo-adopt.git"
+  },
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
   "types": "./lib/typescript/index.d.ts",
@@ -33,7 +39,7 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace react-native-quicktracking-analytics-module-example",
+    "example": "yarn workspace react-native-quicktracking-analytics-module-expo-adopt-example",
     "test": "jest",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -45,21 +51,12 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "expo",
+    "analytics",
+    "quicktracking",
+    "tracking"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://www.github.com/rn_qt_analytics.git.git"
-  },
-  "author": "yuzhao <changliang.lcl@alibaba-inc.com> (https://help.aliyun.com/document_detail/2805800.html)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://www.github.com/rn_qt_analytics.git/issues"
-  },
-  "homepage": "https://www.github.com/rn_qt_analytics.git#readme",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "devDependencies": {
     "@commitlint/config-conventional": "^19.6.0",
     "@eslint/compat": "^1.2.7",

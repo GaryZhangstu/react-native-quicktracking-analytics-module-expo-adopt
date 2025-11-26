@@ -5,17 +5,17 @@
 ## 下载npm包到项目中
 ```bash
 # npm
-npm install react-native-quicktracking-analytics-module
+npm install react-native-quicktracking-analytics-module-expo-adopt
 
 # yarn
-yarn add react-native-quicktracking-analytics-module
+yarn add react-native-quicktracking-analytics-module-expo-adopt
 
 # pnpm
-pnpm add react-native-quicktracking-analytics-module
+pnpm add react-native-quicktracking-analytics-module-expo-adopt
 ```
 ## 引入SDK环境变量
 ```tsx
-import * as QT from "react-native-quicktracking-analytics-module";
+import * as QT from "react-native-quicktracking-analytics-module-expo-adopt";
 ```
 
 ## AppKey和收数域名获取

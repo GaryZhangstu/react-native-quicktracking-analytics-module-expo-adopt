@@ -9731,9 +9731,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-quicktracking-analytics-module@workspace:.":
+"react-native-quicktracking-analytics-module-expo-adopt@workspace:.":
   version: 0.0.0-use.local
-  resolution: "react-native-quicktracking-analytics-module@workspace:."
+  resolution: "react-native-quicktracking-analytics-module-expo-adopt@workspace:."
   dependencies:
     "@commitlint/config-conventional": ^19.6.0
     "@eslint/compat": ^1.2.7
