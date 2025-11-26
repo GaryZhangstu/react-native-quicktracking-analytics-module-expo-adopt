@@ -130,5 +130,28 @@ class QuicktrackingAnalyticsExpoModule : Module() {
         promise.reject("GET_DEVICE_ID_ERROR", e.message, e)
       }
     }
+
+    // Read configuration from AndroidManifest.xml
+    Function("getConfig") { ->
+      val activity = app.currentActivity ?: return@Function null
+      val packageManager = activity.packageManager
+      val packageName = activity.packageName
+      val applicationInfo = packageManager.getApplicationInfo(
+        packageName,
+        android.content.pm.PackageManager.GET_META_DATA
+      )
+      val metaData = applicationInfo.metaData
+
+      val config = mutableMapOf<String, String?>()
+
+      config["appKey"] = metaData?.getString("com.quicktracking.appKey")
+      config["mainTrackDomain"] = metaData?.getString("com.quicktracking.mainTrackDomain")
+      config["subTrackDomain"] = metaData?.getString("com.quicktracking.subTrackDomain")
+      config["channel"] = metaData?.getString("com.quicktracking.channel")
+      config["enableLog"] = metaData?.getString("com.quicktracking.enableLog")
+      config["customDeviceId"] = metaData?.getString("com.quicktracking.customDeviceId")
+
+      return@Function config
+    }
   }
 }

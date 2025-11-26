@@ -315,3 +315,49 @@ export const getDeviceId = async () => {
     console.log(error);
   }
 };
+
+/**
+ * 从原生配置中读取 QuickTracking 配置（从 AndroidManifest.xml 或 Info.plist）
+ * @returns 配置对象，包含 appKey、mainTrackDomain、subTrackDomain、channel、enableLog、customDeviceId
+ *
+ * @example
+ * // 在 Expo 项目中使用
+ * // 1. 在 app.json 中添加插件配置
+ * {
+ *   "expo": {
+ *     "plugins": [
+ *       ["react-native-quicktracking-analytics-module-expo-adopt", {
+ *         "appKey": "your-app-key",
+ *         "mainTrackDomain": "https://log.quicktracking.cn",
+ *         "channel": "App Store",
+ *         "enableLog": false
+ *       }]
+ *     ]
+ *   }
+ * }
+ *
+ * // 2. 运行 npx expo prebuild 应用配置
+ * // 3. 在代码中读取配置
+ * import { getConfig } from 'react-native-quicktracking-analytics-module-expo-adopt';
+ *
+ * async function initializeSDK() {
+ *   const config = await getConfig();
+ *   console.log('App Key:', config.appKey);
+ *   console.log('Main Domain:', config.mainTrackDomain);
+ * }
+ */
+export const getConfig = async (): Promise<{
+  appKey?: string;
+  mainTrackDomain?: string;
+  subTrackDomain?: string;
+  channel?: string;
+  enableLog?: string;
+  customDeviceId?: string;
+} | null> => {
+  try {
+    return await QuicktrackingAnalyticsModule.getConfig();
+  } catch (error) {
+    console.log('Error reading config:', error);
+    return null;
+  }
+};

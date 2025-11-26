@@ -3,6 +3,7 @@
     "modules": ["QuicktrackingAnalyticsExpoModule"]
   },
   "android": {
-    "modules": ["com.quicktrackinganalyticsmodule.QuicktrackingAnalyticsExpoModule"]
+    "modules": ["com.quicktrackinganalyticsmodule.QuicktrackingAnalyticsExpoModule"],
+    "packages": ["com.quicktrackinganalyticsmodule.QuicktrackingPackage"]
   }
 }

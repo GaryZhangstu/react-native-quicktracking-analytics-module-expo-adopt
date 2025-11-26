@@ -105,5 +105,17 @@ public class QuicktrackingAnalyticsExpoModule: Module {
     AsyncFunction("getDeviceId") { () -> String? in
       return QTMobClick.utdid()
     }
+
+    // Read configuration from Info.plist
+    Function("getConfig") { () -> [String: String?]? in
+      return [
+        "appKey": Bundle.main.object(forInfoDictionaryKey: "QuickTrackingAppKey") as? String,
+        "mainTrackDomain": Bundle.main.object(forInfoDictionaryKey: "QuickTrackingMainTrackDomain") as? String,
+        "subTrackDomain": Bundle.main.object(forInfoDictionaryKey: "QuickTrackingSubTrackDomain") as? String,
+        "channel": Bundle.main.object(forInfoDictionaryKey: "QuickTrackingChannel") as? String,
+        "enableLog": Bundle.main.object(forInfoDictionaryKey: "QuickTrackingEnableLog") as? String,
+        "customDeviceId": Bundle.main.object(forInfoDictionaryKey: "QuickTrackingCustomDeviceId") as? String
+      ]
+    }
   }
 }
