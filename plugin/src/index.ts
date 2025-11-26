@@ -121,6 +121,7 @@ const withQuickTracking: ConfigPlugin<QuickTrackingPluginProps> = (
       'android.permission.ACCESS_NETWORK_STATE',
       'android.permission.ACCESS_WIFI_STATE',
       'android.permission.INTERNET',
+      'android.permission.READ_PHONE_STATE',
     ];
 
     // Ensure uses-permission array exists
@@ -141,6 +142,52 @@ const withQuickTracking: ConfigPlugin<QuickTrackingPluginProps> = (
         });
       }
     }
+
+    return config;
+  });
+
+  // Add Deep Link intent-filter for app wake-up
+  config = withAndroidManifest(config, (config) => {
+    const mainActivity = AndroidConfig.Manifest.getMainActivityOrThrow(
+      config.modResults
+    );
+
+    // Ensure intent-filter array exists
+    if (!mainActivity['intent-filter']) {
+      mainActivity['intent-filter'] = [];
+    }
+
+    // Add separate intent-filter for deep linking
+    // Format: atm.{appKey}
+    const scheme = `atm.${props.appKey}`;
+    mainActivity['intent-filter'].push({
+      action: [
+        {
+          $: {
+            'android:name': 'android.intent.action.VIEW',
+          },
+        },
+      ],
+      category: [
+        {
+          $: {
+            'android:name': 'android.intent.category.DEFAULT',
+          },
+        },
+        {
+          $: {
+            'android:name': 'android.intent.category.BROWSABLE',
+          },
+        },
+      ],
+      data: [
+        {
+          $: {
+            'android:scheme': scheme,
+          },
+        },
+      ],
+    });
 
     return config;
   });
